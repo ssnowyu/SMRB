@@ -1,0 +1,21 @@
+# @package _global_
+
+defaults:
+  - override /trainer: default.yaml
+  - override /model: mlp.yaml
+  - override /datamodule: total_text_glove.yaml
+  - override /callbacks: wandb.yaml
+  - override /logger: wandb.yaml
+
+seed: 12345
+
+logger:
+  wandb:
+    name: 'MLP-total-GloVe'
+    tags: ['total', 'GloVe']
+
+model:
+  api_embed_path: embeddings/total/text_glove_api_embeddings.npy
+  mashup_embed_channels: 300
+  mlp_output_channels: 300
+  lr: 0.001

@@ -1,0 +1,17 @@
+# @package _global_
+
+defaults:
+  - override /trainer: default.yaml
+  - override /model: freq.yaml
+  - override /datamodule: total_text_bert.yaml
+  - override /callbacks: wandb.yaml
+  - override /logger: wandb.yaml
+
+seed: 12345
+
+logger:
+  wandb:
+    name: 'Freq-total'
+
+datamodule:
+  pair_in_training: false

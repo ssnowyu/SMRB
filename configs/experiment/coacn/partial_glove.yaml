@@ -1,0 +1,27 @@
+# @package _global_
+
+defaults:
+  - override /trainer: default.yaml
+  - override /model: coacn.yaml
+  - override /datamodule: partial_text_glove.yaml
+  - override /callbacks: wandb.yaml
+  - override /logger: wandb.yaml
+
+seed: 12345
+
+logger:
+  wandb:
+    name: 'coACN-partial-GloVe'
+
+datamodule:
+  pair_in_training: false
+
+model:
+  mashup_embed_path: api_mashup/embeddings/text_glove_mashup_embeddings.npy
+  domain_embed_path: coacn/partial_glove_domain_embeddings.npy
+  api_embed_path: api_mashup/embeddings/partial/text_glove_api_embeddings.npy
+  invoked_matrix_path: api_mashup/partial_invoked_matrix.npy
+  mashup_embed_channels: 300
+  api_embed_channels: 300
+  domain_embed_channels: 300
+  feature_dim: 128

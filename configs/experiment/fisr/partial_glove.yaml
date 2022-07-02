@@ -1,0 +1,22 @@
+# @package _global_
+
+defaults:
+  - override /trainer: default.yaml
+  - override /model: fisr.yaml
+  - override /datamodule: partial_text_glove.yaml
+  - override /callbacks: wandb.yaml
+  - override /logger: wandb.yaml
+
+seed: 12345
+
+logger:
+  wandb:
+    name: 'FISR-partial-GloVe'
+    tags: ['partial', 'GloVe']
+
+datamodule:
+  pair_in_training: false
+
+model:
+  api_embed_path: embeddings/partial/text_glove_api_embeddings.npy
+  feature_dim: 300

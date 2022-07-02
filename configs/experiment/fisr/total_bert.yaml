@@ -1,0 +1,22 @@
+# @package _global_
+
+defaults:
+  - override /trainer: default.yaml
+  - override /model: fisr.yaml
+  - override /datamodule: total_text_bert.yaml
+  - override /callbacks: wandb.yaml
+  - override /logger: wandb.yaml
+
+seed: 12345
+
+logger:
+  wandb:
+    name: 'FISR-total-BERT'
+    tags: ['total', 'BERT']
+
+datamodule:
+  pair_in_training: false
+
+model:
+  api_embed_path: embeddings/total/text_bert_api_embeddings.npy
+  feature_dim: 768

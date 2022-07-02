@@ -1,0 +1,24 @@
+# @package _global_
+
+defaults:
+  - override /trainer: default.yaml
+  - override /model: t2l2.yaml
+  - override /datamodule: total_text_glove.yaml
+  - override /callbacks: wandb.yaml
+  - override /logger: wandb.yaml
+
+seed: 12345
+
+logger:
+  wandb:
+    name: 'T2L2-total-GloVe'
+    tags: ['total', 'GloVe']
+
+datamodule:
+  pair_in_training: false
+
+model:
+  mashup_embed_channels: 300
+  api_embed_path: embeddings/total/text_glove_api_embeddings.npy
+  api_embed_channels: 300
+  mlp_output_channels: 300

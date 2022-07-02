@@ -1,0 +1,22 @@
+# @package _global_
+
+defaults:
+  - override /trainer: default.yaml
+  - override /model: fisr.yaml
+  - override /datamodule: total_text_glove.yaml
+  - override /callbacks: wandb.yaml
+  - override /logger: wandb.yaml
+
+seed: 12345
+
+logger:
+  wandb:
+    name: 'FISR-total-GloVe'
+    tags: ['total', 'GloVe']
+
+datamodule:
+  pair_in_training: false
+
+model:
+  api_embed_path: embeddings/total/text_glove_api_embeddings.npy
+  feature_dim: 300

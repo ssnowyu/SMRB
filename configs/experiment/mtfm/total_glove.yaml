@@ -1,0 +1,22 @@
+# @package _global_
+
+defaults:
+  - override /trainer: default.yaml
+  - override /model: mtfm.yaml
+  - override /datamodule: total_word_glove.yaml
+  - override /callbacks: wandb.yaml
+  - override /logger: wandb.yaml
+
+seed: 12345
+
+logger:
+  wandb:
+    name: 'MTFM-total-GloVe'
+    tags: ['total', 'GloVe']
+
+datamodule:
+  pair_in_training: False
+
+model:
+  embed_channels: 300
+  num_api: 21495

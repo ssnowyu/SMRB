@@ -1,0 +1,21 @@
+# @package _global_
+
+defaults:
+  - override /trainer: default.yaml
+  - override /model: mlp.yaml
+  - override /datamodule: partial_text_glove.yaml
+  - override /callbacks: wandb.yaml
+  - override /logger: wandb.yaml
+
+seed: 12345
+
+logger:
+  wandb:
+    name: 'MLP-partial-GloVe'
+    tags: ['partial', 'GloVe']
+
+model:
+  api_embed_path: embeddings/partial/text_glove_api_embeddings.npy
+  mashup_embed_channels: 300
+  mlp_output_channels: 300
+  lr: 0.001

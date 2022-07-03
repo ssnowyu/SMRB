@@ -81,8 +81,8 @@ The directory structure of new project looks like this:
 
 Download the data from [here](xxx) and copy it to the *data* directory.
 
-# Quickstart
-
+# Installation
+## Install with anaconda
 ```
 # clone project
 git clone xxxxxxxxx
@@ -94,6 +94,17 @@ conda activate myenv
 
 # install requirements
 pip install -r requirements.txt
+```
+
+## Install with docker
+You will need to install Nvidia Container Toolkit to enable GPU support.
+
+```
+# build the container
+docker build -t <project_name> .
+
+# mount the project to the container
+docker run -v $(pwd):/workspace/project --gpus all -it --rm <project_name>
 ```
 
 # Guide

@@ -3,8 +3,6 @@ _target_: src.models.misr.MISR
 data_dir: ${data_dir}/api_mashup # data_dir is specified in config.yaml
 mashup_embed_path: embeddings/word_glove_mashup_embeddings.npy
 api_embed_path: embeddings/partial/word_glove_api_embeddings.npy
-mashup_embed_res_path: ${data_dir}/misr/glove_mashup_embeddings.npy
-api_embed_res_path: ${data_dir}/misr/partial_glove_api_embeddings.npy
 conv_in_channels: 300
 conv_out_channels: 100
 out_channels: 128

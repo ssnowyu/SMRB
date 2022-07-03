@@ -156,13 +156,6 @@ class MISR(LightningModule):
             'targets': labels
         }
 
-    def on_test_end(self) -> None:
-        print('save.....')
-        mashup_embeddings = self.extra_seq(self.mashup_embed).detach().to('cpu').numpy()
-        np.save(self.mashup_embed_res_path, mashup_embeddings)
-        api_embeddings = self.extra_seq(self.api_embed).detach().to('cpu').numpy()
-        np.save(self.api_embed_res_path, api_embeddings)
-
     def configure_optimizers(self):
         return torch.optim.Adam(
             params=self.parameters(), lr=self.hparams.lr, weight_decay=self.hparams.weight_decay

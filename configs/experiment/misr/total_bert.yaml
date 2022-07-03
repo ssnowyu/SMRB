@@ -16,6 +16,4 @@ logger:
 model:
   mashup_embed_path: embeddings/word_bert_mashup_embeddings.npy
   api_embed_path: embeddings/total/word_bert_api_embeddings.npy
-  mashup_embed_res_path: ${data_dir}/misr/bert_mashup_embeddings.npy
-  api_embed_res_path: ${data_dir}/misr/bert_api_embeddings.npy
   conv_in_channels: 768

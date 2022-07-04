@@ -86,7 +86,7 @@ Download the data from [here](xxx) and copy it to the *data* directory.
 ```
 # clone project
 git clone https://github.com/ssnowyu/SMRB
-cd https://github.com/ssnowyu/SMRB
+cd SMRB
 
 # create conda environment
 conda create -n myenv python=3.8
@@ -102,7 +102,7 @@ You will need to install Nvidia Container Toolkit to enable GPU support.
 ```
 # clone project
 git clone https://github.com/ssnowyu/SMRB
-cd https://github.com/ssnowyu/SMRB
+cd SMRB
 
 # build the container
 docker build -t <project_name> .

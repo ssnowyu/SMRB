@@ -111,6 +111,56 @@ docker build -t <project_name> .
 docker run -v $(pwd):/workspace/project --gpus all -it --rm <project_name>
 ```
 
+# Quickstart
+
+1. Implement the DL-based model as the [LightningModule](https://pytorch-lightning.readthedocs.io/en/stable/common/lightning_module.html) class. Details refer to [Model Implementation](#implement). Here the `MLP` model (pre-configured in our project) is used as an example.
+2. Write a configuration file called `simple_model` for your model.
+   ```
+    _target_: src.models.mlp.MLP
+
+    data_dir: ${data_dir}/api_mashup
+    api_embed_path: embeddings/partial/text_bert_api_embeddings.npy
+    mashup_embed_channels: 300
+    mlp_output_channels: 300
+    lr: 0.001
+    weight_decay: 0.00001
+   ```
+3. Write a configuration file called `mlp` for your experiment.
+   ```
+    # @package _global_
+
+    defaults:
+        - override /trainer: default.yaml              # use default settings for trainer
+        - override /model: mlp.yaml                    # use "mlp" as model
+        - override /datamodule: partial_text_bert.yaml # use partial text-based embeddings encoded by BERT
+        - override /callbacks: wandb.yaml              # use wandb as the callbacks
+        - override /logger: wandb.yaml                 # use wandb as the log framework
+
+    seed: 12345
+
+    logger:
+        wandb:
+            name: 'MLP-partial-BERT'
+            tags: ['partial', 'BERT']
+
+    # Override model parameters
+    model:
+        api_embed_path: embeddings/partial/text_bert_api_embeddings.npy
+        mashup_embed_channels: 768
+        mlp_output_channels: 300
+        lr: 0.001
+   ```
+4. Since the project uses [wandb](https://wandb.ai/site) as the log framework by default, you will need to have a wandb account and bind the account to the project by executing the following command.
+   ```
+   wandb login
+   ```
+   This command needs to be executed only once during the entire development process.
+
+   If you do not want to use wandb, you can also choose another log framework. Please refer to [LightningModule](https://pytorch-lightning.readthedocs.io/en/stable/common/lightning_module.html) for how to change it.
+5. run the project.
+   ```
+   python train.py experiment=mlp/partial_bert
+   ```
 # Guide
 
 ## Choose dataset
@@ -139,11 +189,11 @@ We provides 8 datasets, as shown in the following table:
 - **BERT**: A global log-bilinear regression model for unsupervised learning of word representations.
 - **GloVe**: Bidirectional Encoder Representations from Transformer.
 
-## Model implementation
+## <span id="implement">Model implementation</span>
 
 ![pic](https://github.com/tsdwgfaf/pictures/blob/master/simple_model.png "A model implementation")
 
-You need to implement the network structure of the model as the [LightningModule](https://pytorch-lightning.readthedocs.io/en/stable/common/lightning_module.html) class. What you need to do are:
+You need to implement the DL-based model as the [LightningModule](https://pytorch-lightning.readthedocs.io/en/stable/common/lightning_module.html) class. What you need to do are:
 
 1. return the loss in `training_step` to guide model training.
 2. return the predicted result *preds* and the true result *targets* in `test_step`. Then, the callback mechanism will capture them and calculates the performance on each metric.
@@ -153,7 +203,7 @@ You need to implement the network structure of the model as the [LightningModule
 Organizing experiments by combining existing elements. Take *simple-model* as an example.
 ![pic](https://github.com/tsdwgfaf/pictures/blob/master/config.png "A experiment config")
 
-## Prefabricated models
+## Pre-configured models
 1. [MTFM](https://ieeexplore.ieee.org/document/9492754)
 2. [coACN](https://ieeexplore.ieee.org/document/9590360/)
 3. [MISR](https://ieeexplore.ieee.org/document/8960409)

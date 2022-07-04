@@ -79,7 +79,7 @@ The directory structure of new project looks like this:
     └───unit                       <- Unit tests
 ```
 
-Download the data from [here](xxx) and copy it to the *data* directory.
+Download the data from [here](https://drive.google.com/file/d/1iOgjbF2Hdk4t9zE4VHRgfYeurD7_PVog/view?usp=sharing) and copy it to the *data* directory.
 
 # Installation
 ## Install with anaconda

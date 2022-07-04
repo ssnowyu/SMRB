@@ -191,7 +191,7 @@ We provides 8 datasets, as shown in the following table:
 
 ## <span id="implement">Model implementation</span>
 
-![pic](https://github.com/tsdwgfaf/pictures/blob/master/simple_model.png "A model implementation")
+![pic](https://github.com/tsdwgfaf/pictures/raw/master/simple_model.png "A model implementation")
 
 You need to implement the DL-based model as the [LightningModule](https://pytorch-lightning.readthedocs.io/en/stable/common/lightning_module.html) class. What you need to do are:
 
@@ -201,7 +201,7 @@ You need to implement the DL-based model as the [LightningModule](https://pytorc
 ## Experiment configuration
 
 Organizing experiments by combining existing elements. Take *simple-model* as an example.
-![pic](https://github.com/tsdwgfaf/pictures/blob/master/config.png "A experiment config")
+![pic](https://github.com/tsdwgfaf/pictures/raw/master/config.png "A experiment config")
 
 ## Pre-configured models
 1. [MTFM](https://ieeexplore.ieee.org/document/9492754)

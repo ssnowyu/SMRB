@@ -166,16 +166,16 @@ docker run -v $(pwd):/workspace/project --gpus all -it --rm <project_name>
 ## Choose dataset
 We provides 8 datasets, as shown in the following table:
 
-| name               | form       | pre-tained model | amount  |
-|--------------------|------------|------------------|---------|
-| partial_text_bert  | text-based | BERT             | partial |
-| partial_text_glove | text-based | GloVe            | partial |
-| partial_word_bert  | word-based | BERT             | partial |
-| partial_word_glove | word-based | GloVe            | partial |
-| total_text_bert    | text-based | BERT             | total   |
-| total_text_glove   | text-based | GloVe            | total   |
-| total_word_bert    | word-based | BERT             | total   |
-| total_word_glove   | word-based | GloVe            | total   |
+| name               | form       | pre-trained model | amount  |
+|--------------------|------------|-------------------|---------|
+| partial_text_bert  | text-based | BERT              | partial |
+| partial_text_glove | text-based | GloVe             | partial |
+| partial_word_bert  | word-based | BERT              | partial |
+| partial_word_glove | word-based | GloVe             | partial |
+| total_text_bert    | text-based | BERT              | total   |
+| total_text_glove   | text-based | GloVe             | total   |
+| total_word_bert    | word-based | BERT              | total   |
+| total_word_glove   | word-based | GloVe             | total   |
 
 ### Two forms
 - $(72 \times d)$. The original form processed by word embedding model, and each word corresponds to a vector whose size is $(1 \times d)$. This form is suitable for word-based representation.

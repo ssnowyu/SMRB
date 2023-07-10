@@ -82,6 +82,8 @@ The directory structure of new project looks like this:
 Download the data from [here](https://drive.google.com/file/d/1iOgjbF2Hdk4t9zE4VHRgfYeurD7_PVog/view?usp=sharing) and copy it to the *data* directory.
 
 # Installation
+You can install environment by anaconda or docker, and then download the dataset.
+
 ## Install with anaconda
 ```
 # clone project
@@ -110,6 +112,9 @@ docker build -t <project_name> .
 # mount the project to the container
 docker run -v $(pwd):/workspace/project --gpus all -it --rm <project_name>
 ```
+
+## Download the dataset
+Download dataset from [here](https://drive.google.com/file/d/1YnZzEyB6Nua5-k8k2V8iyzAUGpRwKcx0/view?usp=sharing), unzip it and move it to the `data` directory in the project.
 
 # Quickstart
 
